@@ -28,6 +28,7 @@ tile_set = ExtResource("2_nlsky")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_dcoaj")]
 position = Vector2(-254, 64)
+coyote_duration = 0.15
 
 [node name="Area2D2" type="Area2D" parent="."]
 position = Vector2(294, -122)

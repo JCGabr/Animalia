@@ -21,7 +21,7 @@ func process(delta: float) -> void:
 	
 	if owner_node.mask_cooldown <= 0:
 		if Input.is_action_just_pressed("two"):
-			owner_node.mask_cooldown = owner_node.cooldown_duration  # <-- ESTO FALTABA
+			owner_node.mask_cooldown = owner_node.cooldown_duration
 			request_transition.emit("Monkey")
 			owner_node.animation_player.play("Human_Mask",-1,3.5)
 			await owner_node.animation_player.animation_finished
@@ -29,7 +29,7 @@ func process(delta: float) -> void:
 			#await owner_node.animation_player.animation_finished
 			
 		if Input.is_action_just_pressed("three"):
-			owner_node.mask_cooldown = owner_node.cooldown_duration  # <-- ESTO FALTABA
+			owner_node.mask_cooldown = owner_node.cooldown_duration
 			request_transition.emit("Tiger")
 			owner_node.animation_player.play("Human_Mask",-1,3.5)
 			await owner_node.animation_player.animation_finished
@@ -37,7 +37,7 @@ func process(delta: float) -> void:
 			#await owner_node.animation_player.animation_finished
 			
 		if Input.is_action_just_pressed("four"):
-			owner_node.mask_cooldown = owner_node.cooldown_duration  # <-- ESTO FALTABA
+			owner_node.mask_cooldown = owner_node.cooldown_duration
 			request_transition.emit("Spider")
 			owner_node.animation_player.play("Human_Mask",-1,3.5)
 			await owner_node.animation_player.animation_finished

@@ -8,12 +8,11 @@ var jump_velocity = -200.0
 @export var action_state_machine: StateMachine
 
 var coyote_timer: float = 0.0
-@export var coyote_duration: float = 0.15 # Tiempo de gracia en segundos
+@export var coyote_duration: float = 0.15
 
 var mask_cooldown: float = 0.0
 var cooldown_duration: float = 0.0
 var is_grabbing : bool = false
-
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
@@ -32,3 +31,9 @@ func _physics_process(delta: float) -> void:
 			animation_player.play(action_state_machine.current_state.name + "_Jump")
 
 	move_and_slide()
+
+
+func _on_hurt_box_body_entered(body: Node2D) -> void:
+	if body is TileMapLayer:
+		if body.name == "Damage":
+			get_tree().reload_current_scene()
