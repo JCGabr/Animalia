@@ -1,12 +1,47 @@
-[gd_scene format=3 uid="uid://c3f6dpvgyiu2p"]
+[gd_scene load_steps=9 format=3 uid="uid://bi5188i7jvk2v"]
 
-[node name="OutroMenu" type="Control"]
+[ext_resource type="Script" uid="uid://c2ehplyx741r5" path="res://scenes/outro_menu/outro_menu.gd" id="1_2hqa2"]
+[ext_resource type="Texture2D" uid="uid://b0rw71wlykew2" path="res://sprites/Background.png" id="2_i707h"]
+[ext_resource type="FontFile" uid="uid://dbdoco7w4mev7" path="res://GrapeSoda.ttf" id="3_e18eh"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3rkf3"]
+texture = ExtResource("2_i707h")
+modulate_color = Color(0.29954728, 0.2995475, 0.29954743, 0.7764706)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70654"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3rkf3"]
+bg_color = Color(0.69135684, 0.6913568, 0.69135684, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_247la"]
+bg_color = Color(0.5409905, 0.5409905, 0.5409905, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3rkf3"]
+
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_2hqa2")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -15,11 +50,67 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_3rkf3")
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 698.0
-offset_top = 621.0
-offset_right = 1414.0
-offset_bottom = 809.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -370.0
+offset_top = -99.0
+offset_right = 370.0
+offset_bottom = 314.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 80
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 59
+theme_override_styles/normal = SubResource("StyleBoxFlat_70654")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3rkf3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_247la")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3rkf3")
 text = "Restart"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 59
+theme_override_styles/normal = SubResource("StyleBoxFlat_70654")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3rkf3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_247la")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3rkf3")
+text = "Exit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -282.5
+offset_top = 111.0
+offset_right = 282.5
+offset_bottom = 391.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_constants/shadow_offset_x = -120
+theme_override_constants/shadow_offset_y = 245
+theme_override_fonts/font = ExtResource("3_e18eh")
+theme_override_font_sizes/font_size = 280
+text = "Exit!"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_exit_pressed"]
