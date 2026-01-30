@@ -1,7 +1,7 @@
 extends State
 
 var local_speed: float = 100.0
-var local_jump_velocity: float = -300.0
+var local_jump_velocity: float = -250.0
 var slide_velocity: float = 30.0
 var grab_on_cooldown: bool = false
 
