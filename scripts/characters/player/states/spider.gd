@@ -5,7 +5,7 @@ var local_jump_velocity: float = -200.0
 var can_swing: bool = false
 var used_swing: bool = false
 var swing_point: Vector2
-var swing_force: float = 400.0
+var swing_force: float = 350.0
 var is_swinging: bool = false
 var web_line: Line2D
 
@@ -65,6 +65,56 @@ func process(delta: float) -> void:
 	
 	update_web_visual()
 
+func swing() -> void:
+	# Solo permitimos el impulso si can_swing es true y presionas saltar
+	if can_swing && Input.is_action_just_pressed("jump"):
+		var direction = (swing_point - owner_node.global_position).normalized()
+		
+		# Aplicamos el impulso (aumenté un poco el swing_force para que se note)
+		owner_node.velocity = direction * (swing_force * 1.5)
+		
+		used_swing = true
+		is_swinging = true # Esto mantendrá la telaraña dibujada
+
+func update_web_visual() -> void:
+	if web_line:
+		# IMPORTANTE: Eliminamos 'can_swing' de la condición aquí. 
+		# Queremos que la telaraña se vea mientras dure el impulso (is_swinging),
+		# aunque ya hayamos salido del área del gancho.
+		if is_swinging:
+			web_line.clear_points()
+			web_line.add_point(owner_node.global_position)
+			web_line.add_point(swing_point)
+			
+			# Si estamos muy cerca del punto, cortamos el hilo visual
+			if owner_node.global_position.distance_to(swing_point) < 20:
+				is_swinging = false
+		else:
+			web_line.clear_points()
+
+func physics_process(delta: float) -> void:
+	if not owner_node.is_on_floor():
+		swing()
+		# Solo rotamos si estamos impulsándonos
+		if is_swinging:
+			update_swing_rotation()
+	else:
+		# Al tocar el suelo, reseteamos todo
+		is_swinging = false
+		used_swing = false
+		owner_node.rotation = lerp(owner_node.rotation, 0.0, 10.0 * delta)
+	
+	if not is_transforming:
+		update_animation()
+
+func update_swing_rotation() -> void:
+	if is_swinging && can_swing:
+		var direction = swing_point - owner_node.global_position
+		var angle = direction.angle() + PI / 2 
+		
+		owner_node.rotation = lerp_angle(owner_node.rotation, angle, 0.3)
+		
+'''
 func physics_process(delta: float) -> void:
 	if not owner_node.is_on_floor():
 		swing()
@@ -79,20 +129,13 @@ func physics_process(delta: float) -> void:
 	
 	if not is_transforming:
 		update_animation()
-
+		
 func swing() -> void:
 	if can_swing && Input.is_action_just_pressed("jump"):
 		var direction = (swing_point - owner_node.global_position).normalized()
 		owner_node.velocity = direction * swing_force
 		used_swing = true
 		is_swinging = true
-
-func update_swing_rotation() -> void:
-	if is_swinging && can_swing:
-		var direction = swing_point - owner_node.global_position
-		var angle = direction.angle() + PI / 2 
-		
-		owner_node.rotation = lerp_angle(owner_node.rotation, angle, 0.3)
 
 func update_web_visual() -> void:
 	if web_line:
@@ -102,6 +145,7 @@ func update_web_visual() -> void:
 			web_line.add_point(swing_point)
 		else:
 			web_line.clear_points()
+'''
 
 func update_animation() -> void:
 	if owner_node.is_on_floor():
