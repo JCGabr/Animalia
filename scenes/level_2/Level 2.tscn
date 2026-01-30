@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=4 uid="uid://dupq5qjbv5tst"]
+[gd_scene load_steps=7 format=4 uid="uid://dupq5qjbv5tst"]
 
+[ext_resource type="Script" uid="uid://bi1a1rojh0l6d" path="res://scripts/change_level.gd" id="1_3dr1b"]
 [ext_resource type="PackedScene" uid="uid://wjnqu0etgb5f" path="res://scenes/border/border.tscn" id="1_7gy80"]
 [ext_resource type="TileSet" uid="uid://dnm3w01behj0r" path="res://tile_sets/world.tres" id="2_nlsky"]
+[ext_resource type="PackedScene" uid="uid://c0p06ro7al8tt" path="res://scenes/level_3/Level 3.tscn" id="2_yaop3"]
 [ext_resource type="PackedScene" uid="uid://1nb6lv0fuqwb" path="res://scenes/characters/player/player.tscn" id="3_dcoaj"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_anu65"]
+
 [node name="Level2" type="Node2D"]
+script = ExtResource("1_3dr1b")
+scene = ExtResource("2_yaop3")
 
 [node name="Border" parent="." instance=ExtResource("1_7gy80")]
 
@@ -22,3 +28,11 @@ tile_set = ExtResource("2_nlsky")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_dcoaj")]
 position = Vector2(-254, 64)
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2(294, -122)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("RectangleShape2D_anu65")
+
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]

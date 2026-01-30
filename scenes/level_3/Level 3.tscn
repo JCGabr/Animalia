@@ -1,11 +1,17 @@
-[gd_scene load_steps=5 format=4 uid="uid://c0p06ro7al8tt"]
+[gd_scene load_steps=8 format=4 uid="uid://c0p06ro7al8tt"]
 
 [ext_resource type="PackedScene" uid="uid://wjnqu0etgb5f" path="res://scenes/border/border.tscn" id="1_2d8kn"]
+[ext_resource type="Script" uid="uid://bi1a1rojh0l6d" path="res://scripts/change_level.gd" id="1_h28db"]
 [ext_resource type="TileSet" uid="uid://dnm3w01behj0r" path="res://tile_sets/world.tres" id="2_3caek"]
+[ext_resource type="PackedScene" uid="uid://c8ootg75t8bjq" path="res://scenes/level_4/level_4.tscn" id="2_nq6pn"]
 [ext_resource type="PackedScene" uid="uid://bw521mox023hg" path="res://scenes/gancho.tscn" id="3_12adw"]
 [ext_resource type="PackedScene" uid="uid://1nb6lv0fuqwb" path="res://scenes/characters/player/player.tscn" id="4_i5vk2"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nq6pn"]
+
 [node name="Level3" type="Node2D"]
+script = ExtResource("1_h28db")
+scene = ExtResource("2_nq6pn")
 
 [node name="Border" parent="." instance=ExtResource("1_2d8kn")]
 
@@ -22,3 +28,11 @@ position = Vector2(182, 8)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("4_i5vk2")]
 position = Vector2(-284, 111)
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2(-278, -107)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("RectangleShape2D_nq6pn")
+
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]

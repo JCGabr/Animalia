@@ -11,7 +11,7 @@ var coyote_timer: float = 0.0
 @export var coyote_duration: float = 0.15 # Tiempo de gracia en segundos
 
 var mask_cooldown: float = 0.0
-var cooldown_duration: float = 1.0
+var cooldown_duration: float = 0.0
 var is_grabbing : bool = false
 
 
