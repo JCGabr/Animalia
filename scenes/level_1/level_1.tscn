@@ -29,12 +29,6 @@ tile_set = ExtResource("2_janvk")
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_janvk")]
 position = Vector2(-277, 48)
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -253.0
-offset_top = -166.0
-offset_right = 54.0
-offset_bottom = 48.0
-
 [node name="Area2D2" type="Area2D" parent="."]
 position = Vector2(-101, -122)
 
