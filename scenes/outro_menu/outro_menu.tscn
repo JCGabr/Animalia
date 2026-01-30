@@ -100,9 +100,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -282.5
+offset_left = -255.125
 offset_top = 111.0
-offset_right = 282.5
+offset_right = 255.125
 offset_bottom = 391.0
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
@@ -110,7 +110,7 @@ theme_override_constants/shadow_offset_x = -120
 theme_override_constants/shadow_offset_y = 245
 theme_override_fonts/font = ExtResource("3_e18eh")
 theme_override_font_sizes/font_size = 280
-text = "Exit!"
+text = "End!"
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_exit_pressed"]
