@@ -1,0 +1,388 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=105 format=3 uid="uid://rjtbqctv5342"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8y75b"]
+animation = &"Human_Die"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bxwvg"]
+animation = &"Human_Fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2v4cy"]
+animation = &"Human_Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j8rto"]
+animation = &"Human_Jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b4gk5"]
+animation = &"Human_Mask"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r0hd7"]
+animation = &"Human_Mask_Monkey"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gpigg"]
+animation = &"Human_Mask_Spider"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nt8su"]
+animation = &"Human_Mask_Tiger"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_10pim"]
+animation = &"Human_Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vlnca"]
+switch_mode = 1
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b1q5g"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_chajt"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_afvx7"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1p0sf"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kl5g2"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jiuwk"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b5mos"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dynk0"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4ge1t"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rlcpy"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c1dak"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4fvev"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_omwlg"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_aqbjf"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nod6u"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_55sjc"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sfvi3"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ew6mj"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_apqo0"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_4kqyw"]
+states/End/position = Vector2(1376, 249)
+states/Human_Die/node = SubResource("AnimationNodeAnimation_8y75b")
+states/Human_Die/position = Vector2(858, 458)
+states/Human_Fall/node = SubResource("AnimationNodeAnimation_bxwvg")
+states/Human_Fall/position = Vector2(526, 348)
+states/Human_Idle/node = SubResource("AnimationNodeAnimation_2v4cy")
+states/Human_Idle/position = Vector2(366, 105)
+states/Human_Jump/node = SubResource("AnimationNodeAnimation_j8rto")
+states/Human_Jump/position = Vector2(297, 339)
+states/Human_Mask/node = SubResource("AnimationNodeAnimation_b4gk5")
+states/Human_Mask/position = Vector2(958, 179)
+states/Human_Mask_Monkey/node = SubResource("AnimationNodeAnimation_r0hd7")
+states/Human_Mask_Monkey/position = Vector2(1200, 275)
+states/Human_Mask_Spider/node = SubResource("AnimationNodeAnimation_gpigg")
+states/Human_Mask_Spider/position = Vector2(1200, 114)
+states/Human_Mask_Tiger/node = SubResource("AnimationNodeAnimation_nt8su")
+states/Human_Mask_Tiger/position = Vector2(1200, 196)
+states/Human_Walk/node = SubResource("AnimationNodeAnimation_10pim")
+states/Human_Walk/position = Vector2(575, 100)
+transitions = ["Start", "Human_Idle", SubResource("AnimationNodeStateMachineTransition_vlnca"), "Human_Idle", "Human_Walk", SubResource("AnimationNodeStateMachineTransition_b1q5g"), "Human_Walk", "Human_Idle", SubResource("AnimationNodeStateMachineTransition_chajt"), "Human_Walk", "Human_Fall", SubResource("AnimationNodeStateMachineTransition_afvx7"), "Human_Idle", "Human_Fall", SubResource("AnimationNodeStateMachineTransition_1p0sf"), "Human_Idle", "Human_Jump", SubResource("AnimationNodeStateMachineTransition_kl5g2"), "Human_Walk", "Human_Jump", SubResource("AnimationNodeStateMachineTransition_jiuwk"), "Human_Jump", "Human_Fall", SubResource("AnimationNodeStateMachineTransition_b5mos"), "Human_Fall", "Human_Idle", SubResource("AnimationNodeStateMachineTransition_dynk0"), "Human_Jump", "Human_Die", SubResource("AnimationNodeStateMachineTransition_4ge1t"), "Human_Fall", "Human_Die", SubResource("AnimationNodeStateMachineTransition_rlcpy"), "Human_Walk", "Human_Die", SubResource("AnimationNodeStateMachineTransition_c1dak"), "Human_Idle", "Human_Die", SubResource("AnimationNodeStateMachineTransition_4fvev"), "Human_Walk", "Human_Mask", SubResource("AnimationNodeStateMachineTransition_omwlg"), "Human_Idle", "Human_Mask", SubResource("AnimationNodeStateMachineTransition_aqbjf"), "Human_Fall", "Human_Mask", SubResource("AnimationNodeStateMachineTransition_nod6u"), "Human_Jump", "Human_Mask", SubResource("AnimationNodeStateMachineTransition_55sjc"), "Human_Mask", "Human_Mask_Spider", SubResource("AnimationNodeStateMachineTransition_sfvi3"), "Human_Mask", "Human_Mask_Tiger", SubResource("AnimationNodeStateMachineTransition_ew6mj"), "Human_Mask", "Human_Mask_Monkey", SubResource("AnimationNodeStateMachineTransition_apqo0")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_42irl"]
+animation = &"Monkey_Climb"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3xnwo"]
+animation = &"Monkey_Die"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_djydg"]
+animation = &"Monkey_Fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bsn6e"]
+animation = &"Monkey_Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_blysn"]
+animation = &"Monkey_Jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hv5x3"]
+animation = &"Monkey_Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ykrpk"]
+switch_mode = 1
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i1nod"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4kqyw"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_svuau"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ro20i"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8y75b"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tebod"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6nfx3"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3hnlq"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d73qs"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u6wme"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bxwvg"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2v4cy"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j8rto"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b4gk5"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r0hd7"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_i1nod"]
+states/Monkey_Climb/node = SubResource("AnimationNodeAnimation_42irl")
+states/Monkey_Climb/position = Vector2(474, 436)
+states/Monkey_Die/node = SubResource("AnimationNodeAnimation_3xnwo")
+states/Monkey_Die/position = Vector2(943, 209)
+states/Monkey_Fall/node = SubResource("AnimationNodeAnimation_djydg")
+states/Monkey_Fall/position = Vector2(336, 273)
+states/Monkey_Idle/node = SubResource("AnimationNodeAnimation_bsn6e")
+states/Monkey_Idle/position = Vector2(352, 95)
+states/Monkey_Jump/node = SubResource("AnimationNodeAnimation_blysn")
+states/Monkey_Jump/position = Vector2(595, 296)
+states/Monkey_Walk/node = SubResource("AnimationNodeAnimation_hv5x3")
+states/Monkey_Walk/position = Vector2(623, 95)
+transitions = ["Start", "Monkey_Idle", SubResource("AnimationNodeStateMachineTransition_ykrpk"), "Monkey_Idle", "Monkey_Walk", SubResource("AnimationNodeStateMachineTransition_i1nod"), "Monkey_Walk", "Monkey_Jump", SubResource("AnimationNodeStateMachineTransition_4kqyw"), "Monkey_Walk", "Monkey_Fall", SubResource("AnimationNodeStateMachineTransition_svuau"), "Monkey_Idle", "Monkey_Fall", SubResource("AnimationNodeStateMachineTransition_ro20i"), "Monkey_Idle", "Monkey_Jump", SubResource("AnimationNodeStateMachineTransition_8y75b"), "Monkey_Jump", "Monkey_Fall", SubResource("AnimationNodeStateMachineTransition_tebod"), "Monkey_Walk", "Monkey_Idle", SubResource("AnimationNodeStateMachineTransition_6nfx3"), "Monkey_Fall", "Monkey_Idle", SubResource("AnimationNodeStateMachineTransition_3hnlq"), "Monkey_Fall", "Monkey_Climb", SubResource("AnimationNodeStateMachineTransition_d73qs"), "Monkey_Jump", "Monkey_Climb", SubResource("AnimationNodeStateMachineTransition_u6wme"), "Monkey_Idle", "Monkey_Die", SubResource("AnimationNodeStateMachineTransition_bxwvg"), "Monkey_Fall", "Monkey_Die", SubResource("AnimationNodeStateMachineTransition_2v4cy"), "Monkey_Jump", "Monkey_Die", SubResource("AnimationNodeStateMachineTransition_j8rto"), "Monkey_Climb", "Monkey_Die", SubResource("AnimationNodeStateMachineTransition_b4gk5"), "Monkey_Walk", "Monkey_Die", SubResource("AnimationNodeStateMachineTransition_r0hd7")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tebod"]
+animation = &"Spider_Die"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6nfx3"]
+animation = &"Spider_Falling"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3hnlq"]
+animation = &"Spider_Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u6wme"]
+animation = &"Spider_Jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d73qs"]
+animation = &"Spider_Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_es5sa"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kxlma"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ieypo"]
+switch_mode = 1
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sulyr"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_71adu"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xm30n"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qe74o"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s4se6"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4c5ab"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_omk8d"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kghjy"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_72eiu"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rr0sw"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_svuau"]
+states/Spider_Die/node = SubResource("AnimationNodeAnimation_tebod")
+states/Spider_Die/position = Vector2(156, 237)
+states/Spider_Falling/node = SubResource("AnimationNodeAnimation_6nfx3")
+states/Spider_Falling/position = Vector2(366, 388)
+states/Spider_Idle/node = SubResource("AnimationNodeAnimation_3hnlq")
+states/Spider_Idle/position = Vector2(388, 113)
+states/Spider_Jump/node = SubResource("AnimationNodeAnimation_u6wme")
+states/Spider_Jump/position = Vector2(638, 330)
+states/Spider_Walk/node = SubResource("AnimationNodeAnimation_d73qs")
+states/Spider_Walk/position = Vector2(638, 113)
+transitions = ["Spider_Walk", "Spider_Idle", SubResource("AnimationNodeStateMachineTransition_es5sa"), "Spider_Idle", "Spider_Walk", SubResource("AnimationNodeStateMachineTransition_kxlma"), "Start", "Spider_Idle", SubResource("AnimationNodeStateMachineTransition_ieypo"), "Spider_Idle", "Spider_Falling", SubResource("AnimationNodeStateMachineTransition_sulyr"), "Spider_Falling", "Spider_Idle", SubResource("AnimationNodeStateMachineTransition_71adu"), "Spider_Walk", "Spider_Falling", SubResource("AnimationNodeStateMachineTransition_xm30n"), "Spider_Idle", "Spider_Die", SubResource("AnimationNodeStateMachineTransition_qe74o"), "Spider_Falling", "Spider_Die", SubResource("AnimationNodeStateMachineTransition_s4se6"), "Spider_Walk", "Spider_Die", SubResource("AnimationNodeStateMachineTransition_4c5ab"), "Spider_Idle", "Spider_Jump", SubResource("AnimationNodeStateMachineTransition_omk8d"), "Spider_Walk", "Spider_Jump", SubResource("AnimationNodeStateMachineTransition_kghjy"), "Spider_Jump", "Spider_Falling", SubResource("AnimationNodeStateMachineTransition_72eiu"), "Spider_Jump", "Spider_Die", SubResource("AnimationNodeStateMachineTransition_rr0sw")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ykrpk"]
+animation = &"Tiger_Die"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i1nod"]
+animation = &"Tiger_Fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4kqyw"]
+animation = &"Tiger_Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_svuau"]
+animation = &"Tiger_Jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ro20i"]
+animation = &"Tiger_Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ejaeo"]
+switch_mode = 1
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kbkvr"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ofe5m"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qiw4v"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_35rnk"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8clsk"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ba42v"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_em43t"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fvt27"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d4s5w"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tsb6l"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1avqj"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o4qpa"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ro20i"]
+states/Tiger_Die/node = SubResource("AnimationNodeAnimation_ykrpk")
+states/Tiger_Die/position = Vector2(424, 299)
+states/Tiger_Fall/node = SubResource("AnimationNodeAnimation_i1nod")
+states/Tiger_Fall/position = Vector2(587, 299)
+states/Tiger_Idle/node = SubResource("AnimationNodeAnimation_4kqyw")
+states/Tiger_Idle/position = Vector2(404, 105)
+states/Tiger_Jump/node = SubResource("AnimationNodeAnimation_svuau")
+states/Tiger_Jump/position = Vector2(704, 188)
+states/Tiger_Walk/node = SubResource("AnimationNodeAnimation_ro20i")
+states/Tiger_Walk/position = Vector2(668, 105)
+transitions = ["Start", "Tiger_Idle", SubResource("AnimationNodeStateMachineTransition_ejaeo"), "Tiger_Idle", "Tiger_Walk", SubResource("AnimationNodeStateMachineTransition_kbkvr"), "Tiger_Walk", "Tiger_Idle", SubResource("AnimationNodeStateMachineTransition_ofe5m"), "Tiger_Walk", "Tiger_Jump", SubResource("AnimationNodeStateMachineTransition_qiw4v"), "Tiger_Idle", "Tiger_Jump", SubResource("AnimationNodeStateMachineTransition_35rnk"), "Tiger_Idle", "Tiger_Fall", SubResource("AnimationNodeStateMachineTransition_8clsk"), "Tiger_Walk", "Tiger_Fall", SubResource("AnimationNodeStateMachineTransition_ba42v"), "Tiger_Jump", "Tiger_Fall", SubResource("AnimationNodeStateMachineTransition_em43t"), "Tiger_Idle", "Tiger_Die", SubResource("AnimationNodeStateMachineTransition_fvt27"), "Tiger_Walk", "Tiger_Die", SubResource("AnimationNodeStateMachineTransition_d4s5w"), "Tiger_Jump", "Tiger_Die", SubResource("AnimationNodeStateMachineTransition_tsb6l"), "Tiger_Fall", "Tiger_Die", SubResource("AnimationNodeStateMachineTransition_1avqj"), "Tiger_Fall", "Tiger_Idle", SubResource("AnimationNodeStateMachineTransition_o4qpa")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pbtrp"]
+animation = &"Transformation"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gpigg"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nt8su"]
+switch_mode = 1
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_10pim"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pbtrp"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qc4jc"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ds8us"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ra07b"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ketpa"]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2el0t"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7s1g3"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kip2f"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vjq2h"]
+switch_mode = 2
+
+[resource]
+states/End/position = Vector2(1298, 249)
+states/Human/node = SubResource("AnimationNodeStateMachine_4kqyw")
+states/Human/position = Vector2(555, 494)
+states/Monkey/node = SubResource("AnimationNodeStateMachine_i1nod")
+states/Monkey/position = Vector2(691, 59)
+states/Spider/node = SubResource("AnimationNodeStateMachine_svuau")
+states/Spider/position = Vector2(685, 162)
+states/Start/position = Vector2(203, 183)
+states/Tiger/node = SubResource("AnimationNodeStateMachine_ro20i")
+states/Tiger/position = Vector2(628, 309)
+states/Transformation/node = SubResource("AnimationNodeAnimation_pbtrp")
+states/Transformation/position = Vector2(1143, 239)
+transitions = ["Start", "Monkey", SubResource("AnimationNodeStateMachineTransition_gpigg"), "Start", "Human", SubResource("AnimationNodeStateMachineTransition_nt8su"), "Start", "Spider", SubResource("AnimationNodeStateMachineTransition_10pim"), "Start", "Tiger", SubResource("AnimationNodeStateMachineTransition_pbtrp"), "Monkey", "Transformation", SubResource("AnimationNodeStateMachineTransition_qc4jc"), "Spider", "Transformation", SubResource("AnimationNodeStateMachineTransition_ds8us"), "Tiger", "Transformation", SubResource("AnimationNodeStateMachineTransition_ra07b"), "Human", "Transformation", SubResource("AnimationNodeStateMachineTransition_ketpa"), "Transformation", "Human", SubResource("AnimationNodeStateMachineTransition_2el0t"), "Transformation", "Tiger", SubResource("AnimationNodeStateMachineTransition_7s1g3"), "Transformation", "Spider", SubResource("AnimationNodeStateMachineTransition_kip2f"), "Transformation", "Monkey", SubResource("AnimationNodeStateMachineTransition_vjq2h")]

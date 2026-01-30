@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpdpksd4irku4"]
+
+[ext_resource type="Script" uid="uid://275qb1lthnue" path="res://scripts/characters/player/animation_center.gd" id="1_bu3be"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_42irl"]
+
+[node name="AnimationCenter" type="Node" node_paths=PackedStringArray("animation_tree", "movement_state_machine", "action_state_machine")]
+script = ExtResource("1_bu3be")
+animation_tree = NodePath("AnimationPlayer/AnimationTree")
+movement_state_machine = NodePath("")
+action_state_machine = NodePath("")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="AnimationTree" type="AnimationTree" parent="AnimationPlayer"]
+root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeStateMachine_42irl")
+anim_player = NodePath("..")

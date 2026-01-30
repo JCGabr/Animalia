@@ -1,0 +1,562 @@
+[gd_scene load_steps=39 format=3 uid="uid://1nb6lv0fuqwb"]
+
+[ext_resource type="Script" uid="uid://tdfgmuvj2xs1" path="res://scenes/characters/player/player.gd" id="1_mk55u"]
+[ext_resource type="Texture2D" uid="uid://dy4d2bik4algf" path="res://mobs_sprites.png" id="2_42irl"]
+[ext_resource type="Script" uid="uid://rk7sqvupiv7v" path="res://scripts/state_machine/state_machine.gd" id="2_t61fv"]
+[ext_resource type="Script" uid="uid://b5vkdrh04nvwp" path="res://scripts/characters/player/states/idle.gd" id="3_686vu"]
+[ext_resource type="Script" uid="uid://bqg5u0q8b4cv3" path="res://scripts/characters/player/states/walk.gd" id="4_hss88"]
+[ext_resource type="Script" uid="uid://jlat5dtq3xaw" path="res://scripts/characters/player/states/human.gd" id="5_mk55u"]
+[ext_resource type="Script" uid="uid://c1r8exg8pai4g" path="res://scripts/characters/player/states/monkey.gd" id="5_qd3e3"]
+[ext_resource type="Script" uid="uid://db2pqqvc6opnn" path="res://scripts/characters/player/states/tiger.gd" id="8_42irl"]
+[ext_resource type="Script" uid="uid://cwc2qce43d3y6" path="res://scripts/characters/player/states/spider.gd" id="9_3xnwo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6avc5"]
+size = Vector2(14, 30)
+
+[sub_resource type="Animation" id="Animation_10pim"]
+resource_name = "Human_Die"
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [132]
+}
+
+[sub_resource type="Animation" id="Animation_pbtrp"]
+resource_name = "Human_Fall"
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 23)]
+}
+
+[sub_resource type="Animation" id="Animation_bxwvg"]
+resource_name = "Human_Idle"
+loop_mode = 1
+step = 0.33333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [108, 109, 110]
+}
+
+[sub_resource type="Animation" id="Animation_j8rto"]
+resource_name = "Human_Jump"
+step = 0.33333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [120, 121, 122]
+}
+
+[sub_resource type="Animation" id="Animation_b4gk5"]
+resource_name = "Human_Mask"
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [126, 127]
+}
+
+[sub_resource type="Animation" id="Animation_nt8su"]
+resource_name = "Human_Mask_Monkey"
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [130]
+}
+
+[sub_resource type="Animation" id="Animation_r0hd7"]
+resource_name = "Human_Mask_Spider"
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [128]
+}
+
+[sub_resource type="Animation" id="Animation_gpigg"]
+resource_name = "Human_Mask_Tiger"
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [129]
+}
+
+[sub_resource type="Animation" id="Animation_2v4cy"]
+resource_name = "Human_Walk"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [114, 115, 116, 117]
+}
+
+[sub_resource type="Animation" id="Animation_blysn"]
+resource_name = "Monkey_Climb"
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [18, 19]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_hv5x3"]
+resource_name = "Monkey_Die"
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [24]
+}
+
+[sub_resource type="Animation" id="Animation_ykrpk"]
+resource_name = "Monkey_Fall"
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [30]
+}
+
+[sub_resource type="Animation" id="Animation_42irl"]
+resource_name = "Monkey_Idle"
+loop_mode = 1
+step = 0.33333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_bsn6e"]
+resource_name = "Monkey_Jump"
+step = 0.33333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [12, 13, 14]
+}
+
+[sub_resource type="Animation" id="Animation_djydg"]
+resource_name = "Monkey_Walk"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_svuau"]
+resource_name = "Spider_Die"
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [60]
+}
+
+[sub_resource type="Animation" id="Animation_ro20i"]
+resource_name = "Spider_Falling"
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [66]
+}
+
+[sub_resource type="Animation" id="Animation_i1nod"]
+resource_name = "Spider_Idle"
+loop_mode = 1
+step = 0.33333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [36, 37, 38]
+}
+
+[sub_resource type="Animation" id="Animation_8y75b"]
+resource_name = "Spider_Jump"
+step = 0.33333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [48, 49, 50]
+}
+
+[sub_resource type="Animation" id="Animation_4kqyw"]
+resource_name = "Spider_Walk"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [42, 43, 44, 45]
+}
+
+[sub_resource type="Animation" id="Animation_d73qs"]
+resource_name = "Tiger_Die"
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [96]
+}
+
+[sub_resource type="Animation" id="Animation_u6wme"]
+resource_name = "Tiger_Fall"
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [102]
+}
+
+[sub_resource type="Animation" id="Animation_tebod"]
+resource_name = "Tiger_Idle"
+loop_mode = 1
+step = 0.33333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [72, 73, 74]
+}
+
+[sub_resource type="Animation" id="Animation_3hnlq"]
+resource_name = "Tiger_Jump"
+step = 0.33333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [84, 85, 86]
+}
+
+[sub_resource type="Animation" id="Animation_6nfx3"]
+resource_name = "Tiger_Walk"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [78, 79, 80, 81]
+}
+
+[sub_resource type="Animation" id="Animation_es5sa"]
+resource_name = "Transformation"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [144, 145, 146, 147]
+}
+
+[sub_resource type="Animation" id="Animation_3xnwo"]
+resource_name = "RESET"
+step = 0.33333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [150]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hv5x3"]
+_data = {
+&"Human_Die": SubResource("Animation_10pim"),
+&"Human_Fall": SubResource("Animation_pbtrp"),
+&"Human_Idle": SubResource("Animation_bxwvg"),
+&"Human_Jump": SubResource("Animation_j8rto"),
+&"Human_Mask": SubResource("Animation_b4gk5"),
+&"Human_Mask_Monkey": SubResource("Animation_nt8su"),
+&"Human_Mask_Spider": SubResource("Animation_r0hd7"),
+&"Human_Mask_Tiger": SubResource("Animation_gpigg"),
+&"Human_Walk": SubResource("Animation_2v4cy"),
+&"Monkey_Climb": SubResource("Animation_blysn"),
+&"Monkey_Die": SubResource("Animation_hv5x3"),
+&"Monkey_Fall": SubResource("Animation_ykrpk"),
+&"Monkey_Idle": SubResource("Animation_42irl"),
+&"Monkey_Jump": SubResource("Animation_bsn6e"),
+&"Monkey_Walk": SubResource("Animation_djydg"),
+&"RESET": SubResource("Animation_3xnwo"),
+&"Spider_Die": SubResource("Animation_svuau"),
+&"Spider_Falling": SubResource("Animation_ro20i"),
+&"Spider_Idle": SubResource("Animation_i1nod"),
+&"Spider_Jump": SubResource("Animation_8y75b"),
+&"Spider_Walk": SubResource("Animation_4kqyw"),
+&"Tiger_Die": SubResource("Animation_d73qs"),
+&"Tiger_Fall": SubResource("Animation_u6wme"),
+&"Tiger_Idle": SubResource("Animation_tebod"),
+&"Tiger_Jump": SubResource("Animation_3hnlq"),
+&"Tiger_Walk": SubResource("Animation_6nfx3"),
+&"Transformation": SubResource("Animation_es5sa")
+}
+
+[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("animation_player", "movement_state_machine", "action_state_machine")]
+script = ExtResource("1_mk55u")
+animation_player = NodePath("AnimationPlayer")
+movement_state_machine = NodePath("MovementStateMachine")
+action_state_machine = NodePath("ActionStateMachine")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_42irl")
+flip_h = true
+hframes = 6
+vframes = 28
+frame = 150
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6avc5")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
+
+[node name="ActionStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "owner_node")]
+script = ExtResource("2_t61fv")
+initial_state = NodePath("Human")
+owner_node = NodePath("..")
+
+[node name="Human" type="Node" parent="ActionStateMachine"]
+script = ExtResource("5_mk55u")
+
+[node name="Monkey" type="Node" parent="ActionStateMachine"]
+script = ExtResource("5_qd3e3")
+
+[node name="Tiger" type="Node" parent="ActionStateMachine"]
+script = ExtResource("8_42irl")
+
+[node name="Spider" type="Node" parent="ActionStateMachine"]
+script = ExtResource("9_3xnwo")
+
+[node name="MovementStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "owner_node")]
+script = ExtResource("2_t61fv")
+initial_state = NodePath("Idle")
+owner_node = NodePath("..")
+
+[node name="Idle" type="Node" parent="MovementStateMachine"]
+script = ExtResource("3_686vu")
+
+[node name="Walk" type="Node" parent="MovementStateMachine"]
+script = ExtResource("4_hss88")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+&"": SubResource("AnimationLibrary_hv5x3")
+}
+
+[connection signal="request_transition" from="ActionStateMachine/Human" to="ActionStateMachine" method="_on_state_request_transition"]
+[connection signal="request_transition" from="ActionStateMachine/Monkey" to="ActionStateMachine" method="_on_state_request_transition"]
+[connection signal="request_transition" from="ActionStateMachine/Tiger" to="ActionStateMachine" method="_on_state_request_transition"]
+[connection signal="request_transition" from="ActionStateMachine/Spider" to="ActionStateMachine" method="_on_state_request_transition"]
+[connection signal="request_transition" from="MovementStateMachine/Idle" to="MovementStateMachine" method="_on_state_request_transition"]
+[connection signal="request_transition" from="MovementStateMachine/Walk" to="MovementStateMachine" method="_on_state_request_transition"]

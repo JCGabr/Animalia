@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=3 uid="uid://da0qg6potx0wm"]
+
+[ext_resource type="PackedScene" uid="uid://1nb6lv0fuqwb" path="res://scenes/characters/player/player.tscn" id="1_jhu76"]
+[ext_resource type="PackedScene" uid="uid://bw521mox023hg" path="res://scenes/gancho.tscn" id="2_byf3o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jhu76"]
+size = Vector2(38.800003, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_byf3o"]
+
+[node name="TestMap" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-2, 33)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(188.00002, 0)
+scale = Vector2(20, 1)
+shape = SubResource("RectangleShape2D_jhu76")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D"]
+modulate = Color(1, 0, 0.050980393, 1)
+position = Vector2(186, 1.5000005)
+scale = Vector2(774.00006, 21)
+mesh = SubResource("BoxMesh_byf3o")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(-207, -199)
+rotation = 1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(188.00002, 0)
+scale = Vector2(20, 1)
+shape = SubResource("RectangleShape2D_jhu76")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D2"]
+modulate = Color(0.14833659, 0.62723666, 0.4350944, 1)
+position = Vector2(186, 1.5000005)
+scale = Vector2(774.00006, 21)
+mesh = SubResource("BoxMesh_byf3o")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(-66, -650)
+rotation = 1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(188.00002, 0)
+scale = Vector2(20, 1)
+shape = SubResource("RectangleShape2D_jhu76")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D3"]
+modulate = Color(0.14833659, 0.62723666, 0.4350944, 1)
+position = Vector2(186, 1.5000005)
+scale = Vector2(774.00006, 21)
+mesh = SubResource("BoxMesh_byf3o")
+
+[node name="Gancho" parent="." instance=ExtResource("2_byf3o")]
+position = Vector2(206, -178)
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2(465, -55)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(188.00002, 0)
+scale = Vector2(20, 1)
+shape = SubResource("RectangleShape2D_jhu76")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D4"]
+modulate = Color(1, 0, 0.050980393, 1)
+position = Vector2(186, 1.5000005)
+scale = Vector2(774.00006, 21)
+mesh = SubResource("BoxMesh_byf3o")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_jhu76")]
+position = Vector2(-48, 1)
