@@ -9,7 +9,16 @@ var swing_force: float = 500.0
 var is_swinging: bool = false
 var web_line: Line2D
 
+var is_transforming: bool = false
+
 func enter() -> void:
+	
+	is_transforming = true
+	owner_node.animation_player.stop()
+	await get_tree().process_frame
+	owner_node.animation_player.play("Transformation", -1, 2.5)
+	await owner_node.animation_player.animation_finished
+	is_transforming = false
 	owner_node.speed = local_speed
 	owner_node.jump_velocity = local_jump_velocity
 	owner_node.animation_player.play("Spider_Idle")
@@ -34,15 +43,22 @@ func exit() -> void:
 	
 	owner_node.rotation = 0
 
-func process(_delta: float) -> void:
-	if Input.is_action_just_pressed("one"):
-		request_transition.emit("Human")
+func process(delta: float) -> void:
+	if owner_node.mask_cooldown > 0:
+		owner_node.mask_cooldown -= delta
 	
-	if Input.is_action_just_pressed("two"):
-		request_transition.emit("Monkey")
-	
-	if Input.is_action_just_pressed("three"):
-		request_transition.emit("Tiger")
+	if owner_node.mask_cooldown <= 0:
+		if Input.is_action_just_pressed("one"):
+			owner_node.mask_cooldown = owner_node.cooldown_duration
+			request_transition.emit("Human")
+		
+		if Input.is_action_just_pressed("two"):
+			owner_node.mask_cooldown = owner_node.cooldown_duration
+			request_transition.emit("Monkey")
+		
+		if Input.is_action_just_pressed("three"):
+			owner_node.mask_cooldown = owner_node.cooldown_duration
+			request_transition.emit("Tiger")
 	
 	update_web_visual()
 
@@ -58,7 +74,8 @@ func physics_process(delta: float) -> void:
 		owner_node.velocity.x = 0
 		used_swing = false
 	
-	update_animation()
+	if not is_transforming:
+		update_animation()
 
 func swing() -> void:
 	if can_swing && Input.is_action_just_pressed("jump"):
@@ -84,10 +101,7 @@ func update_web_visual() -> void:
 			web_line.clear_points()
 
 func update_animation() -> void:
-	if is_swinging:
-		if owner_node.animation_player.current_animation != "Spider_Swing":
-			owner_node.animation_player.play("Spider_Swing")
-	elif owner_node.is_on_floor():
+	if owner_node.is_on_floor():
 		if abs(owner_node.velocity.x) > 10:
 			if owner_node.animation_player.current_animation != "Spider_Walk":
 				owner_node.animation_player.play("Spider_Walk")

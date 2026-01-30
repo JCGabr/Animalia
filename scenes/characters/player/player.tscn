@@ -305,23 +305,6 @@ tracks/0/keys = {
 "values": [60]
 }
 
-[sub_resource type="Animation" id="Animation_ro20i"]
-resource_name = "Spider_Falling"
-loop_mode = 1
-step = 1.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [66]
-}
-
 [sub_resource type="Animation" id="Animation_i1nod"]
 resource_name = "Spider_Idle"
 loop_mode = 1
@@ -470,6 +453,23 @@ tracks/0/keys = {
 "values": [144, 145, 146, 147]
 }
 
+[sub_resource type="Animation" id="Animation_ro20i"]
+resource_name = "Spider_Fall"
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [66]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hv5x3"]
 _data = {
 &"Human_Die": SubResource("Animation_10pim"),
@@ -489,7 +489,7 @@ _data = {
 &"Monkey_Walk": SubResource("Animation_djydg"),
 &"RESET": SubResource("Animation_3xnwo"),
 &"Spider_Die": SubResource("Animation_svuau"),
-&"Spider_Falling": SubResource("Animation_ro20i"),
+&"Spider_Fall": SubResource("Animation_ro20i"),
 &"Spider_Idle": SubResource("Animation_i1nod"),
 &"Spider_Jump": SubResource("Animation_8y75b"),
 &"Spider_Walk": SubResource("Animation_4kqyw"),
@@ -518,7 +518,7 @@ frame = 150
 shape = SubResource("RectangleShape2D_6avc5")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2.5, 2.5)
+zoom = Vector2(4.5, 4.5)
 
 [node name="ActionStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "owner_node")]
 script = ExtResource("2_t61fv")

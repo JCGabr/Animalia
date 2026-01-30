@@ -8,7 +8,11 @@ var jump_velocity = -200.0
 @export var movement_state_machine: StateMachine
 @export var action_state_machine: StateMachine
 
+var mask_cooldown: float = 0.0
+var cooldown_duration: float = 1.0
+
 var is_grabbing : bool = false
+
 func _ready() -> void:
 	pass
 	

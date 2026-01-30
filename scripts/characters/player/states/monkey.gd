@@ -5,27 +5,48 @@ var local_jump_velocity: float = -300.0
 var slide_velocity: float = 40.0
 var grab_on_cooldown: bool = false
 
+var is_transforming: bool = false
+
 func enter() -> void:
+	
+	is_transforming = true
+
+	owner_node.animation_player.stop()
+	await get_tree().process_frame
+	owner_node.animation_player.play("Transformation", -1, 2.5)
+	await owner_node.animation_player.animation_finished
+	is_transforming = false
+
+	
 	owner_node.speed = local_speed
 	owner_node.jump_velocity = local_jump_velocity
+	
 	owner_node.animation_player.play("Monkey_Idle")
 	print("Transformation monkey")
 
 func exit() -> void:
 	print("No more monkey")
-	owner_node.is_grabbing = false  # 👈 Limpiar al salir
+	owner_node.is_grabbing = false
 
-func process(_delta: float) -> void:
-	if Input.is_action_just_pressed("one"):
-		request_transition.emit("Human")
-	if Input.is_action_just_pressed("three"):
-		request_transition.emit("Tiger")
-	if Input.is_action_just_pressed("four"):
-		request_transition.emit("Spider")
+func process(delta: float) -> void:
+	if owner_node.mask_cooldown > 0:
+		owner_node.mask_cooldown -= delta
+	
+	if owner_node.mask_cooldown <= 0:
+		if Input.is_action_just_pressed("one"):
+			owner_node.mask_cooldown = owner_node.cooldown_duration
+			request_transition.emit("Human")
+		if Input.is_action_just_pressed("three"):
+			owner_node.mask_cooldown = owner_node.cooldown_duration
+			request_transition.emit("Tiger")
+		if Input.is_action_just_pressed("four"):
+			owner_node.mask_cooldown = owner_node.cooldown_duration
+			request_transition.emit("Spider")
 
 func physics_process(_delta: float) -> void:
 	grab()
-	update_animation()
+	if not is_transforming:
+		update_animation()
 
 func grab() -> void:
 	var was_grabbing = owner_node.is_grabbing
