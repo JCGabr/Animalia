@@ -5,22 +5,25 @@ var local_jump_velocity: float = -200.0
 var can_swing: bool = false
 var used_swing: bool = false
 var swing_point: Vector2
-var swing_force: float = 500.0
+var swing_force: float = 400.0
 var is_swinging: bool = false
 var web_line: Line2D
 
 var is_transforming: bool = false
 
 func enter() -> void:
-	
 	is_transforming = true
-	owner_node.animation_player.stop()
-	await get_tree().process_frame
-	owner_node.animation_player.play("Transformation", -1, 2.5)
-	await owner_node.animation_player.animation_finished
-	is_transforming = false
+	
 	owner_node.speed = local_speed
 	owner_node.jump_velocity = local_jump_velocity
+	
+	owner_node.animation_player.stop()
+	await get_tree().process_frame
+	
+	owner_node.animation_player.play("Transformation", -1, 2.5)
+	await owner_node.animation_player.animation_finished
+	
+	is_transforming = false
 	owner_node.animation_player.play("Spider_Idle")
 	print("Transformation spider")
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://1nb6lv0fuqwb"]
+[gd_scene load_steps=40 format=3 uid="uid://1nb6lv0fuqwb"]
 
 [ext_resource type="Script" uid="uid://tdfgmuvj2xs1" path="res://scenes/characters/player/player.gd" id="1_mk55u"]
 [ext_resource type="Texture2D" uid="uid://dy4d2bik4algf" path="res://mobs_sprites.png" id="2_42irl"]
@@ -11,6 +11,9 @@
 [ext_resource type="Script" uid="uid://cwc2qce43d3y6" path="res://scripts/characters/player/states/spider.gd" id="9_3xnwo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6avc5"]
+size = Vector2(14, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_42irl"]
 size = Vector2(14, 30)
 
 [sub_resource type="Animation" id="Animation_10pim"]
@@ -305,6 +308,23 @@ tracks/0/keys = {
 "values": [60]
 }
 
+[sub_resource type="Animation" id="Animation_ro20i"]
+resource_name = "Spider_Fall"
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [66]
+}
+
 [sub_resource type="Animation" id="Animation_i1nod"]
 resource_name = "Spider_Idle"
 loop_mode = 1
@@ -453,23 +473,6 @@ tracks/0/keys = {
 "values": [144, 145, 146, 147]
 }
 
-[sub_resource type="Animation" id="Animation_ro20i"]
-resource_name = "Spider_Fall"
-loop_mode = 1
-step = 1.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [66]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hv5x3"]
 _data = {
 &"Human_Die": SubResource("Animation_10pim"),
@@ -519,6 +522,13 @@ shape = SubResource("RectangleShape2D_6avc5")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4.5, 4.5)
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("RectangleShape2D_42irl")
 
 [node name="ActionStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "owner_node")]
 script = ExtResource("2_t61fv")

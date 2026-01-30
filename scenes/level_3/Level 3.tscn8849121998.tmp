@@ -22,4 +22,3 @@ position = Vector2(182, 8)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("4_i5vk2")]
 position = Vector2(-284, 111)
-coyote_duration = 0.15

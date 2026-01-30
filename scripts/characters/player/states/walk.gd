@@ -23,4 +23,4 @@ func body_move(_delta: float) -> bool:
 func physics_process(delta: float) -> void:
 	if not body_move(delta):
 		request_transition.emit("Idle")
-	owner_node.move_and_slide()
+	#owner_node.move_and_slide()

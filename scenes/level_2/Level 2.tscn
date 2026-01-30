@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://dupq5qjbv5tst"]
+[gd_scene load_steps=4 format=4 uid="uid://dupq5qjbv5tst"]
 
 [ext_resource type="PackedScene" uid="uid://wjnqu0etgb5f" path="res://scenes/border/border.tscn" id="1_7gy80"]
 [ext_resource type="TileSet" uid="uid://dnm3w01behj0r" path="res://tile_sets/world.tres" id="2_nlsky"]
+[ext_resource type="PackedScene" uid="uid://1nb6lv0fuqwb" path="res://scenes/characters/player/player.tscn" id="3_dcoaj"]
 
 [node name="Level2" type="Node2D"]
 
@@ -18,3 +19,6 @@ tile_set = ExtResource("2_nlsky")
 [node name="Decoration" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AADv/wQAAQADAAEAAAD3//j/AQADAAEAAAD1//n/AQACAAEAAAD0//r/AQACAAEAAAAEAPj/AQACAAEAAAAFAPj/AQACAAEAAAABAPn/AQADAAEAAAAGAPn/AQADAAEAAAACAPn/AQACAAEAAAAQAPj/AQACAAEAAAARAPj/AQADAAEAAADt/wQAAQACAAEAAADy/wQAAQADAAEAAAA=")
 tile_set = ExtResource("2_nlsky")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("3_dcoaj")]
+position = Vector2(-254, 64)
