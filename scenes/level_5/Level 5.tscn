@@ -1,12 +1,18 @@
-[gd_scene load_steps=6 format=4 uid="uid://bxly42ghhexef"]
+[gd_scene load_steps=9 format=4 uid="uid://bxly42ghhexef"]
 
 [ext_resource type="PackedScene" uid="uid://wjnqu0etgb5f" path="res://scenes/border/border.tscn" id="1_346lc"]
 [ext_resource type="Texture2D" uid="uid://ciybxk5deah30" path="res://sprites/Skyblue.png" id="1_chf22"]
+[ext_resource type="Script" uid="uid://bi1a1rojh0l6d" path="res://scripts/change_level.gd" id="1_heio1"]
 [ext_resource type="TileSet" uid="uid://dnm3w01behj0r" path="res://tile_sets/world.tres" id="2_4thxh"]
+[ext_resource type="PackedScene" uid="uid://bi5188i7jvk2v" path="res://scenes/outro_menu/outro_menu.tscn" id="2_pg5et"]
 [ext_resource type="PackedScene" uid="uid://1nb6lv0fuqwb" path="res://scenes/characters/player/player.tscn" id="3_j580a"]
 [ext_resource type="PackedScene" uid="uid://bw521mox023hg" path="res://scenes/gancho.tscn" id="4_6yd8i"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_heio1"]
+
 [node name="Level5" type="Node2D"]
+script = ExtResource("1_heio1")
+scene = ExtResource("2_pg5et")
 
 [node name="Skyblue" type="Sprite2D" parent="."]
 position = Vector2(-35, -124)
@@ -34,3 +40,11 @@ position = Vector2(-291, 96)
 
 [node name="Node2D" parent="." instance=ExtResource("4_6yd8i")]
 position = Vector2(184, 4)
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2(-310, -108)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("RectangleShape2D_heio1")
+
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]

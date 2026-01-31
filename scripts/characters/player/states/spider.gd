@@ -5,7 +5,7 @@ var local_jump_velocity: float = -200.0
 var can_swing: bool = false
 var used_swing: bool = false
 var swing_point: Vector2
-var swing_force: float = 350.0
+var swing_force: float = 300.0
 var is_swinging: bool = false
 var web_line: Line2D
 

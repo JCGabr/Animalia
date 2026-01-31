@@ -11,10 +11,10 @@
 [ext_resource type="Script" uid="uid://cwc2qce43d3y6" path="res://scripts/characters/player/states/spider.gd" id="9_3xnwo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6avc5"]
-size = Vector2(14, 30)
+size = Vector2(21, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_42irl"]
-size = Vector2(14, 30)
+size = Vector2(21, 30)
 
 [sub_resource type="Animation" id="Animation_10pim"]
 resource_name = "Human_Die"
@@ -520,6 +520,7 @@ vframes = 28
 frame = 150
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_6avc5")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -530,6 +531,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_42irl")
 
 [node name="ActionStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "owner_node")]
