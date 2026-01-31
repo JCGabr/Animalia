@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://bol7pokrsyfph"]
+
+[ext_resource type="Script" uid="uid://cocwxf5vmfufe" path="res://scenes/HUD/controls.gd" id="1_dodtn"]
+[ext_resource type="FontFile" uid="uid://dbdoco7w4mev7" path="res://GrapeSoda.ttf" id="2_3m0pc"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_dodtn")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 14.0
+offset_top = 7.0
+offset_right = 54.0
+offset_bottom = 47.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_3m0pc")
+theme_override_font_sizes/font_size = 18
+text = "Human - 1
+Monkey-2      (Glings to walls)
+Tiger - 3			          (Run faster)
+Spider - 4       (Impulse with spacebar)
+
+Hide controls - H
+"
+
+[node name="Label2" type="Label" parent="Control"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_3m0pc")
+theme_override_font_sizes/font_size = 18
+text = "Show controls - H"
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = -7.0
+offset_right = 297.0
+offset_bottom = 136.0
+color = Color(0.16862746, 0.16862746, 0.16862746, 0.101960786)
+
+[node name="ColorRect2" type="ColorRect" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = -14.0
+offset_right = 138.0
+offset_bottom = 19.0
+color = Color(0.16862746, 0.16862746, 0.16862746, 0.101960786)
