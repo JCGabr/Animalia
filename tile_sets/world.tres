@@ -139,28 +139,18 @@ texture = ExtResource("4_oi5hj")
 texture_region_size = Vector2i(64, 32)
 0:0/0 = 0
 1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
 0:1/0 = 0
 1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_560r5"]
 texture = ExtResource("5_ryiay")
 texture_region_size = Vector2i(64, 48)
 0:0/0 = 0
 1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
 0:1/0 = 0
 1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
 0:2/0 = 0
 1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kx66c"]
 texture = ExtResource("6_7mhym")
@@ -171,11 +161,6 @@ texture_region_size = Vector2i(48, 64)
 0:1/0 = 0
 1:1/0 = 0
 2:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-1:3/0 = 0
-2:3/0 = 0
 
 [resource]
 physics_layer_0/collision_layer = 1

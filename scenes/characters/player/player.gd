@@ -36,4 +36,4 @@ func _physics_process(delta: float) -> void:
 func _on_hurt_box_body_entered(body: Node2D) -> void:
 	if body is TileMapLayer:
 		if body.name == "Damage":
-			get_tree().reload_current_scene()
+			get_tree().call_deferred("reload_current_scene")
