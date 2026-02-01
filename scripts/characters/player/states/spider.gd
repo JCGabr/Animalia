@@ -66,27 +66,21 @@ func process(delta: float) -> void:
 	update_web_visual()
 
 func swing() -> void:
-	# Solo permitimos el impulso si can_swing es true y presionas saltar
 	if can_swing && Input.is_action_just_pressed("jump"):
 		var direction = (swing_point - owner_node.global_position).normalized()
 		
-		# Aplicamos el impulso (aumenté un poco el swing_force para que se note)
 		owner_node.velocity = direction * (swing_force * 1.5)
 		
 		used_swing = true
-		is_swinging = true # Esto mantendrá la telaraña dibujada
+		is_swinging = true
 
 func update_web_visual() -> void:
 	if web_line:
-		# IMPORTANTE: Eliminamos 'can_swing' de la condición aquí. 
-		# Queremos que la telaraña se vea mientras dure el impulso (is_swinging),
-		# aunque ya hayamos salido del área del gancho.
 		if is_swinging:
 			web_line.clear_points()
 			web_line.add_point(owner_node.global_position)
 			web_line.add_point(swing_point)
 			
-			# Si estamos muy cerca del punto, cortamos el hilo visual
 			if owner_node.global_position.distance_to(swing_point) < 20:
 				is_swinging = false
 		else:
@@ -95,11 +89,9 @@ func update_web_visual() -> void:
 func physics_process(delta: float) -> void:
 	if not owner_node.is_on_floor():
 		swing()
-		# Solo rotamos si estamos impulsándonos
 		if is_swinging:
 			update_swing_rotation()
 	else:
-		# Al tocar el suelo, reseteamos todo
 		is_swinging = false
 		used_swing = false
 		owner_node.rotation = lerp(owner_node.rotation, 0.0, 10.0 * delta)
@@ -114,39 +106,6 @@ func update_swing_rotation() -> void:
 		
 		owner_node.rotation = lerp_angle(owner_node.rotation, angle, 0.3)
 		
-'''
-func physics_process(delta: float) -> void:
-	if not owner_node.is_on_floor():
-		swing()
-		update_swing_rotation()
-	else:
-		is_swinging = false
-		owner_node.rotation = lerp(owner_node.rotation, 0.0, 10.0 * delta)
-	
-	if owner_node.is_on_floor() && used_swing == true:
-		owner_node.velocity.x = 0
-		used_swing = false
-	
-	if not is_transforming:
-		update_animation()
-		
-func swing() -> void:
-	if can_swing && Input.is_action_just_pressed("jump"):
-		var direction = (swing_point - owner_node.global_position).normalized()
-		owner_node.velocity = direction * swing_force
-		used_swing = true
-		is_swinging = true
-
-func update_web_visual() -> void:
-	if web_line:
-		if is_swinging && can_swing:
-			web_line.clear_points()
-			web_line.add_point(owner_node.global_position)
-			web_line.add_point(swing_point)
-		else:
-			web_line.clear_points()
-'''
-
 func update_animation() -> void:
 	if owner_node.is_on_floor():
 		if abs(owner_node.velocity.x) > 10:

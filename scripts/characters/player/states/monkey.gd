@@ -7,7 +7,6 @@ var grab_on_cooldown: bool = false
 
 var is_transforming: bool = false
 
-# NUEVO
 var wall_jump_buffer: float = 0.0
 var wall_jump_buffer_time: float = 0.20
 
@@ -50,7 +49,6 @@ func process(delta: float) -> void:
 			request_transition.emit("Spider")
 
 func physics_process(_delta: float) -> void:
-	# NUEVO
 	if wall_jump_buffer > 0:
 		wall_jump_buffer -= _delta
 		
@@ -59,13 +57,11 @@ func physics_process(_delta: float) -> void:
 	
 	if coyote_wall_timer > 0:
 		coyote_wall_timer -= _delta
-	# NUEVO
 			
 	grab()
 	if not is_transforming:
 		update_animation()
 
-# NUEVO
 func check_buffered_wall_jump():
 	if Input.is_action_just_pressed("jump"):
 		wall_jump_buffer = wall_jump_buffer_time
@@ -101,16 +97,14 @@ func grab() -> void:
 	var wall_detected = false
 	var wall_normal = Vector2.ZERO
 	
-	# Detectar pared
 	for i in range(owner_node.get_slide_collision_count()):
 		var c : KinematicCollision2D = owner_node.get_slide_collision(i)
 		if abs(c.get_normal().x) > 0.6:
 			wall_detected = true
 			wall_normal = c.get_normal()
-			coyote_wall_timer = coyote_wall_duration  # ✅ Reiniciar coyote time
+			coyote_wall_timer = coyote_wall_duration
 			break
 	
-	# Si está en la pared O acaba de soltarse (coyote time)
 	if wall_detected:
 		owner_node.is_grabbing = true
 		
@@ -120,13 +114,12 @@ func grab() -> void:
 		if not was_grabbing or owner_node.get_node("Sprite2D").flip_h != (wall_normal.x < 0):
 			owner_node.get_node("Sprite2D").flip_h = wall_normal.x < 0
 	
-	# ✅ MEJORADO - Puede saltar si está agarrado O si acaba de soltar la pared
 	if (wall_detected or coyote_wall_timer > 0) and Input.is_action_just_pressed("jump") and not grab_on_cooldown and not owner_node.is_on_floor():
 		var jump_dir := Vector2(wall_normal.x, -1.0).normalized()
 		owner_node.velocity = jump_dir * abs(owner_node.jump_velocity) * 1.2
 		grab_on_cooldown = true
 		owner_node.is_grabbing = false
-		coyote_wall_timer = 0  # ✅ Consumir el coyote time
+		coyote_wall_timer = 0
 		start_cooldown()
 		
 func update_animation() -> void:

@@ -13,11 +13,12 @@ offset_left = 14.0
 offset_top = 7.0
 offset_right = 54.0
 offset_bottom = 47.0
+scale = Vector2(2, 2)
 
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_right = 288.0
+offset_bottom = 151.0
 theme_override_fonts/font = ExtResource("2_3m0pc")
 theme_override_font_sizes/font_size = 18
 text = "Human - 1
